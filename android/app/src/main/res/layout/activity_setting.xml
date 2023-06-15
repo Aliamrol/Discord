@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".setting">
+
+
+    <ImageView
+        android:id="@+id/imageViewSetting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_launcher_background"
+        tools:layout_editor_absoluteX="20dp" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="28dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/change_username"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:autofillHints=""
+        android:hint="@string/change_user_name"
+        android:inputType=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="200dp"/>
+
+    <EditText
+        android:id="@+id/change_password"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="320dp"
+        android:autofillHints=""
+        android:hint="@string/change_password"
+        android:inputType=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
+
+
+    <EditText
+        android:id="@+id/change_email"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="440dp"
+        android:autofillHints=""
+        android:hint="@string/change_e_mail"
+        android:inputType=""
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextFields" />
+
+    <Button
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:text="@string/change"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_change_username"
+        android:background="#97E487"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="200dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="320dp"
+        android:id="@+id/btn_change_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#97E487"
+        android:text="@string/change"
+        tools:ignore="MissingConstraints"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/get_id"
+        android:layout_marginRight="10dp"
+        android:text="@string/get_id"/>
+
+
+    <TextView
+        android:id="@+id/username_show"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#FF0404"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="440dp"
+        android:id="@+id/btn_change_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#97E487"
+        android:text="@string/change"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+
+    <Button
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/back_od_setting"
+        android:foreground="@android:drawable/ic_menu_revert"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="667dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/status_online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/online"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="110dp"
+        tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/status_idle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/idle"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintLeft_toRightOf="@+id/status_online"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="110dp"
+        />
+
+    <Button
+        android:id="@+id/status_dnt_disturb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dnt_disturb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="110dp"
+        app:layout_constraintLeft_toRightOf="@id/status_idle"
+        android:layout_marginLeft="10dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/status_Invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="@string/invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="110dp"
+        app:layout_constraintLeft_toRightOf="@id/status_dnt_disturb"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

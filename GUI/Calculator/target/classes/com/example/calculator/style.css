@@ -1,0 +1,4 @@
+#backGround{
+    -fx-background-image: url('Pics/SignUpBackGround.jpg');
+    -fx-background-size: cover;
+}

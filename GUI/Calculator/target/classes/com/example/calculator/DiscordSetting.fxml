@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="509.0" prefWidth="658.0" style="-fx-background-color: #36393f;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.DiscordSetting">
+   <children>
+      <AnchorPane layoutX="128.0" layoutY="81.0" prefHeight="304.0" prefWidth="394.0" style="-fx-background-color: #23272A; -fx-background-radius: 10Px;">
+         <children>
+            <AnchorPane prefHeight="66.0" prefWidth="394.0" style="-fx-background-color: black;" />
+            <AnchorPane layoutX="16.0" layoutY="126.0" prefHeight="158.0" prefWidth="362.0" style="-fx-background-color: #36393f; -fx-background-radius: 10Px;">
+               <children>
+                  <Button layoutX="297.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#editUsername" prefHeight="26.0" prefWidth="51.0" style="-fx-background-color: #979C9F;" text="Edit" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="297.0" layoutY="67.0" mnemonicParsing="false" onMouseClicked="#editEmail" prefHeight="26.0" prefWidth="51.0" style="-fx-background-color: #979C9F;" text="Edit" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="297.0" layoutY="113.0" mnemonicParsing="false" onMouseClicked="#editPhoneNumber" prefHeight="26.0" prefWidth="51.0" style="-fx-background-color: #979C9F;" text="Edit" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fill="#e7e7e7" fontSmoothingType="LCD" layoutX="13.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" />
+                  <Text fx:id="usernameText" fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text fill="#e7e7e7" fontSmoothingType="LCD" layoutX="13.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL" />
+                  <Text fill="#e7e7e7" fontSmoothingType="LCD" layoutX="13.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PHONE NUMBER" />
+                  <Text fx:id="emailText" fill="WHITE" fontSmoothingType="LCD" layoutX="13.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text fx:id="phoneNumberText" fill="WHITE" fontSmoothingType="LCD" layoutX="13.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </AnchorPane>
+            <Button layoutX="258.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#changePicture" prefHeight="26.0" prefWidth="119.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Edit User Profile" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Circle fx:id="myImage" fill="DODGERBLUE" layoutX="61.0" layoutY="73.0" radius="45.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="usernameField" fill="#faf8f8" fontSmoothingType="LCD" layoutX="116.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="106.93673706054688">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="escImage" fitHeight="33.0" fitWidth="33.0" layoutX="572.0" layoutY="62.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Pics/escLogo.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Text fx:id="escText" fill="#a9a7a7" fontSmoothingType="LCD" layoutX="578.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ESC" />
+      <Line fx:id="line" endX="208.5999755859375" endY="3.0517578125E-5" layoutX="312.0" layoutY="417.0" startX="-183.89999389648438" startY="3.0517578125E-5" stroke="#616161" />
+      <Text fx:id="PasswordAndAuthentication" fill="#faf8f8" fontSmoothingType="LCD" layoutX="128.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password and Authentication" wrappingWidth="240.79996032714826">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="ChangePasswordButton" layoutX="128.0" layoutY="458.0" mnemonicParsing="false" onMouseClicked="#editPassword" prefHeight="26.0" prefWidth="147.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Change Password" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <AnchorPane fx:id="changePasswordPane" layoutX="123.0" layoutY="33.0" prefHeight="457.0" prefWidth="394.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="100.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update your password" wrappingWidth="202.40007324218755">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="45.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your current password and a new password." wrappingWidth="311.1999999999998">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#cfcfcf" fontSmoothingType="LCD" layoutX="45.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CURRENT PASSWORD" wrappingWidth="119.19999999999982" />
+            <PasswordField fx:id="currentPassword" layoutX="45.0" layoutY="128.0" prefHeight="40.0" prefWidth="311.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Text fill="#cfcfcf" fontSmoothingType="LCD" layoutX="45.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NEW PASSWORD" wrappingWidth="119.19999999999982" />
+            <PasswordField fx:id="newPassword" layoutX="45.0" layoutY="222.0" prefHeight="40.0" prefWidth="311.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Text fill="#cfcfcf" fontSmoothingType="LCD" layoutX="45.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIRM NEW PASSWORD" wrappingWidth="163.19999999999982" />
+            <PasswordField fx:id="confirmNewPassword" layoutX="45.0" layoutY="318.0" prefHeight="40.0" prefWidth="311.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <AnchorPane layoutX="-1.0" layoutY="390.0" prefHeight="66.0" prefWidth="422.0" style="-fx-background-color: #23272A;">
+               <children>
+                  <Button layoutX="300.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#changePassword" prefHeight="27.0" prefWidth="91.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Done" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="16.0" fitWidth="20.0" layoutX="387.0" layoutY="12.0" onMouseClicked="#closeChangePasswordPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="invalidPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="invalid password!" visible="false" wrappingWidth="119.19999999999982">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="newPasswordWithoutNumber" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password should have at least one number!" visible="false" wrappingWidth="193.599948120117">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="newPasswordWithoutCapitalLetter" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password should have at least one capital letter!" visible="false" wrappingWidth="216.53672790527344">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="newPasswordWithoutSmallLetter" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password should have at least one small letter!" visible="false" wrappingWidth="216.53672790527344">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="emptyNewPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your new password cannot be empty! " visible="false" wrappingWidth="193.599948120117">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="wrongConfirmPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirmation password does not match!" visible="false" wrappingWidth="182.93675231933594">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="longerPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose a longer password!" visible="false" wrappingWidth="119.19999999999982">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changeUsernamePane" layoutX="121.0" layoutY="81.0" prefHeight="275.0" prefWidth="406.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <AnchorPane layoutY="212.0" prefHeight="66.0" prefWidth="406.0" style="-fx-background-color: #23272A;">
+               <children>
+                  <Button layoutX="282.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#changeUsername" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Done" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="98.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change your username" wrappingWidth="208.53672790527344">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="133.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your new username." wrappingWidth="137.33677673339844" />
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="45.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME" wrappingWidth="106.93673706054688" />
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="376.0" layoutY="14.0" onMouseClicked="#exitChangeUsernamePane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="longerUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="46.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose a longer username!" visible="false" wrappingWidth="147.20000000000005">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="wrongUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="45.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username should contains of number and english letter!" visible="false" wrappingWidth="251.20000000000005">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="repeatedUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="46.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this username already exists!" visible="false" wrappingWidth="193.599948120117">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <TextField fx:id="changeUsernameField" layoutX="45.0" layoutY="127.0" prefHeight="40.0" prefWidth="311.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Text fx:id="emptyUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="46.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username cannot be empty!" visible="false" wrappingWidth="153.60002441406232">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changeEmailPane" layoutX="121.0" layoutY="82.0" prefHeight="275.0" prefWidth="406.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <AnchorPane layoutY="214.0" prefHeight="60.0" prefWidth="406.0" style="-fx-background-color: #23272A;">
+               <children>
+                  <Button layoutX="281.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#changeEmail" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Done" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="117.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change your email" wrappingWidth="171.7367401123047">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="143.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your new email." wrappingWidth="119.19999999999982" />
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="40.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL" />
+            <TextField fx:id="changeEmailField" layoutX="40.0" layoutY="118.0" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #23272A; -fx-background-radius: 5pX; -fx-text-fill: white;" />
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="376.0" layoutY="14.0" onMouseClicked="#exitChangeEmailPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="emailWithoutUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="40.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email should have an username!" visible="false" wrappingWidth="153.60002441406232">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="emailWithoutDomain" fill="#e74c3c" fontSmoothingType="LCD" layoutX="40.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your email address domain is invalid!" visible="false" wrappingWidth="163.19999999999982">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="emptyEmail" fill="#e74c3c" fontSmoothingType="LCD" layoutX="40.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email is empty!" visible="false" wrappingWidth="119.19999999999982">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changePhoneNumberPane" layoutX="121.0" layoutY="82.0" prefHeight="275.0" prefWidth="406.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <AnchorPane layoutY="214.0" prefHeight="60.0" prefWidth="406.0" style="-fx-background-color: #23272A;">
+               <children>
+                  <Button layoutX="278.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#changePhoneNumber" prefHeight="26.0" prefWidth="91.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Done" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+               </children>
+            </AnchorPane>
+            <Text fill="WHITE" layoutX="88.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter your phone number" wrappingWidth="230.39993591308576">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="45.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PHONE NUMBER" wrappingWidth="106.93673706054688" />
+            <TextField fx:id="changePhoneNumberField" layoutX="43.0" layoutY="118.0" prefHeight="40.0" prefWidth="320.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Text fx:id="wrongPhoneNumber" fill="#e74c3c" fontSmoothingType="LCD" layoutX="43.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wrong phone number!" visible="false" wrappingWidth="125.60002441406232" />
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="376.0" layoutY="14.0" onMouseClicked="#exitChangePhoneNumberPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

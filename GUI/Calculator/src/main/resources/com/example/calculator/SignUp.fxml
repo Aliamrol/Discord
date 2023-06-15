@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="backGround" prefHeight="414.0" prefWidth="634.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.SignUpPage">
+   <children>
+      <AnchorPane layoutX="122.0" layoutY="50.0" prefHeight="278.0" prefWidth="389.0" style="-fx-background-color: #23272A;">
+         <children>
+            <Text fill="#f4f3f3" fontSmoothingType="LCD" layoutX="115.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Create an account" wrappingWidth="132.5367431640625">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="usernameField" layoutX="26.0" layoutY="71.0" />
+            <Text fill="#fcfcfc" fontSmoothingType="LCD" layoutX="26.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" wrappingWidth="72.5367431640625">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="202.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" wrappingWidth="65.336669921875">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="26.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" wrappingWidth="65.336669921875">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <TextField fx:id="emailField" layoutX="26.0" layoutY="151.0" />
+            <PasswordField fx:id="passwordField" layoutX="202.0" layoutY="71.0" />
+            <PasswordField fx:id="confirmField" layoutX="202.0" layoutY="151.0" />
+            <Text fill="#fffcfc" fontSmoothingType="LCD" layoutX="202.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirm password" wrappingWidth="122.13671875">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Button layoutX="115.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#SignUp" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #206694; -fx-text-fill: white;" text="Sign up">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fill="#3498db" fontSmoothingType="LCD" layoutX="181.0" layoutY="262.0" onMouseClicked="#callSignIn" strokeType="OUTSIDE" strokeWidth="0.0" text="back!" underline="true" wrappingWidth="36.5367431640625">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Text fx:id="longerUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose a longer username!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="wrongUsernameCharacters" fill="#e74c3c" fontSmoothingType="LCD" layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username should contains of number and english letter!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="repeatedUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this username already exists!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="emptyUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="27.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username is empty!" visible="false" wrappingWidth="82.93670654296875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="longerPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose a longer password!" visible="false" wrappingWidth="111.73675537109375">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="passwordWithoutDigit" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password should have at least one number!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="passwordWithoutCapitalLetter" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password should have at least one capital letter!" visible="false" wrappingWidth="178.05010986328125">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="passwordWithoutSmallLetter" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password should have at least one small letter!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="emptyPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password is empty!" visible="false" wrappingWidth="111.73675537109375">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="emailWithoutUsername" fill="#e74c3c" fontSmoothingType="LCD" layoutX="26.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email should have an username!" visible="false" wrappingWidth="90.93670654296875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="WrongEmailDomain" fill="#e74c3c" fontSmoothingType="LCD" layoutX="26.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your email address domain is invalid!" visible="false" wrappingWidth="111.73675537109375">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Text>
+            <Text fx:id="emptyEmail" fill="#e74c3c" fontSmoothingType="LCD" layoutX="26.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email is empty!" visible="false" wrappingWidth="111.73675537109375">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fx:id="wrongConfirmPassword" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirmation password does not match!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <ImageView fx:id="visible1" fitHeight="29.0" fitWidth="30.0" layoutX="356.0" layoutY="69.0" onMouseClicked="#visible1Clicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/visible.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="visible2" fitHeight="29.0" fitWidth="30.0" layoutX="356.0" layoutY="149.0" onMouseClicked="#visible2Clicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/visible.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <TextField fx:id="passwordTextField" layoutX="202.0" layoutY="71.0" visible="false" />
+            <TextField fx:id="confirmTextField" layoutX="203.0" layoutY="151.0" visible="false" />
+            <Text fx:id="emptyConfirm" fill="#e74c3c" fontSmoothingType="LCD" layoutX="202.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password confirmation is empty!" visible="false" wrappingWidth="122.13671875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="83.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Pics/discordLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

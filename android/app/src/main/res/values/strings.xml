@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Discord</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="log_in">LOG IN</string>
+    <string name="todo">TODO</string>
+    <string name="user_name">USER NAME</string>
+    <string name="password">PASSWORD</string>
+    <string name="e_mail">E MAIL</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="chats">Chats</string>
+    <string name="private_chat">PRIVATE CHAT</string>
+    <string name="change_user_name">CHANGE USER NAME</string>
+    <string name="change_password">CHANGE PASSWORD</string>
+    <string name="change_e_mail">CHANGE E MAIL</string>
+    <string name="change">CHANGE</string>
+    <string name="get_id">GET ID</string>
+    <string name="online">ONLINE</string>
+    <string name="idle">IDLE</string>
+    <string name="dnt_disturb">DNT DISTURB</string>
+    <string name="invisible">INVISIBLE</string>
+</resources>

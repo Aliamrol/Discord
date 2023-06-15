@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="backGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="555.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.HelloController">
+   <children>
+      <AnchorPane layoutX="20.0" layoutY="97.0" prefHeight="243.0" prefWidth="200.0" style="-fx-background-color: #23272A; -fx-text-fill: white;">
+         <children>
+            <Text fill="WHITE" layoutX="41.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Welcome back!" wrappingWidth="123.73675537109375">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <TextField fx:id="usernameField" layoutX="25.0" layoutY="74.0" prefHeight="26.0" prefWidth="143.0" />
+            <Text fill="WHITE" layoutX="25.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" wrappingWidth="62.93670654296875">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fill="#fcfafa" layoutX="25.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" wrappingWidth="62.93670654296875">
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fill="#95a5a6" fontSmoothingType="LCD" layoutX="25.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Need an account?" wrappingWidth="74.39998779296877">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <Text fill="#3498db" fontSmoothingType="LCD" layoutX="100.0" layoutY="219.0" onMouseClicked="#callSignUp" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" underline="true" wrappingWidth="38.93670654296875">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Button layoutX="24.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="26.0" prefWidth="144.0" style="-fx-background-color: #206694;" text="Login" textFill="#fffdfd">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <PasswordField fx:id="passwordField" layoutX="25.0" layoutY="131.0" prefHeight="26.0" prefWidth="143.0" />
+            <Text fx:id="invalidInfoLogin" fill="#e74c3c" fontSmoothingType="LCD" layoutX="46.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wrong username or password!" visible="false" wrappingWidth="123.73675537109375">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </Text>
+            <ImageView fx:id="visible" fitHeight="28.0" fitWidth="26.0" layoutX="171.0" layoutY="130.0" onMouseClicked="#visibleClicked" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <image>
+                  <Image url="@Pics/visible.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="passwordTextField" layoutX="25.0" layoutY="131.0" prefHeight="26.0" prefWidth="143.0" visible="false" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="83.0" fitWidth="83.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Pics/discordLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

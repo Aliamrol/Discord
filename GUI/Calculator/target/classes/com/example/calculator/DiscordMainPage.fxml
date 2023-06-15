@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="521.0" prefWidth="911.0" style="-fx-background-color: #2C2F33;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.DiscordMainPage">
+   <children>
+      <AnchorPane fx:id="FriendsMainPane" layoutX="307.0" prefHeight="402.0" prefWidth="593.0" style="-fx-background-color: #36393f;">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="42.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friends">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <Blend>
+                     <topInput>
+                        <Blend />
+                     </topInput>
+                  </Blend>
+               </effect>
+            </Text>
+            <ImageView fitHeight="28.0" fitWidth="38.0" layoutX="6.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/friend.png" />
+               </image>
+            </ImageView>
+            <Line endX="100.0" layoutX="-8.0" layoutY="36.0" startX="100.0" startY="-26.000015258789062" stroke="#95a5a6" />
+            <Button layoutX="96.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#onlineClicked" onMouseEntered="#buttonEntered" onMouseExited="#buttonExited" style="-fx-background-color: transparent;" text="Online" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="149.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#showAllFriends" onMouseEntered="#buttonEntered" onMouseExited="#buttonExited" prefHeight="26.0" prefWidth="30.0" style="-fx-background-color: #36393f;" text="All" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="179.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#showFriendRequests" onMouseEntered="#buttonEntered" onMouseExited="#buttonExited" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #36393f;" text="Pending" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="249.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#showBlocked" onMouseEntered="#buttonEntered" onMouseExited="#buttonExited" style="-fx-background-color: #36393f;" text="Blocked" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="319.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#addToFriendsRequestsList" style="-fx-background-color: #1F8B4C;" text="Add Friend" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Line endX="504.0" layoutX="107.0" layoutY="45.0" startX="-107.0" startY="1.1444091796875E-5" />
+            <AnchorPane fx:id="onlineFriendsPane" layoutX="7.0" layoutY="45.0" prefHeight="354.0" prefWidth="598.0" style="-fx-background-color: #36393f;" visible="false">
+               <children>
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="27.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ONLINE FRIENDS" />
+                  <Line endX="479.199951171875" endY="1.52587890625E-5" layoutX="113.0" layoutY="50.0" startX="-108.00001525878906" startY="1.52587890625E-5" stroke="#565656" />
+                  <ScrollPane hbarPolicy="NEVER" layoutX="27.0" layoutY="70.0" prefHeight="402.0" prefWidth="568.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;">
+                     <content>
+                        <VBox fx:id="onlineFriends" prefHeight="398.0" prefWidth="554.0" style="-fx-background-color: #36393f;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="onlineFriends0Pane" layoutY="42.0" prefHeight="474.0" prefWidth="606.0">
+               <children>
+                  <ImageView fx:id="emptyPageImage" fitHeight="188.0" fitWidth="259.0" layoutX="174.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/discordMainPage.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="addFriendPane" layoutY="46.0" prefHeight="474.0" prefWidth="607.0" visible="false">
+               <children>
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADD FRIEND" wrappingWidth="83.73675537109375" />
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can add a friend with their Discord username." wrappingWidth="270.13671875" />
+                  <TextField fx:id="searchFriend" layoutX="14.0" layoutY="57.0" prefHeight="36.0" prefWidth="578.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Button layoutX="452.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#sendFriendRequest" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Send Friend Request" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="492.199951171875" layoutX="114.0" layoutY="125.0" startX="-115.0" stroke="#535353" />
+                  <ImageView fitHeight="188.0" fitWidth="259.0" layoutX="203.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/addFriendBackGround.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="friendRequestSuccess" fill="#1f8b4c" fontSmoothingType="LCD" layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success! Your friend request was sent." visible="false" wrappingWidth="252.53668212890625" />
+                  <Text fx:id="friendRequestError" fill="#e74c3c" layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hm, didn't work. Double check that the capitalisation, spelling, any spaces and numbers are correct." visible="false" wrappingWidth="545.336669921875" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="FriendRequestPane" layoutX="-1.0" layoutY="46.0" prefHeight="474.0" prefWidth="608.0" visible="false">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="81.0" prefHeight="378.0" prefWidth="588.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="81.0">
+                     <content>
+                        <VBox fx:id="friendRequests" prefHeight="373.0" prefWidth="572.0" style="-fx-background-color: #36393f;" />
+                     </content>
+                  </ScrollPane>
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PENDING" />
+                  <Line endX="501.0" layoutX="107.0" layoutY="68.0" startX="-107.0" stroke="#565656" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="FriendRequest0Pane" layoutX="3.0" layoutY="46.0" prefHeight="474.0" prefWidth="606.0" visible="false">
+               <children>
+                  <ImageView fitHeight="188.0" fitWidth="259.0" layoutX="174.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/pendingPage.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="blocked0Pane" layoutX="3.0" layoutY="44.0" prefHeight="474.0" prefWidth="606.0" visible="false">
+               <children>
+                  <ImageView fitHeight="188.0" fitWidth="256.0" layoutX="174.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/blockPage.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="blockedPane" layoutX="1.0" layoutY="45.0" prefHeight="474.0" prefWidth="606.0" visible="false">
+               <children>
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLOCKED" wrappingWidth="106.93670654296875" />
+                  <Line endX="499.39996337890625" layoutX="107.0" layoutY="58.0" startX="-107.0" stroke="#636363" />
+                  <ScrollPane hbarPolicy="NEVER" layoutX="7.0" layoutY="59.0" prefHeight="411.0" prefWidth="598.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="596.0" style="-fx-background-color: #36393f;">
+                           <children>
+                              <VBox fx:id="blocked" layoutX="16.0" layoutY="17.0" prefHeight="378.0" prefWidth="570.0" style="-fx-background-color: #36393f;" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="allFriendsPane" layoutX="3.0" layoutY="45.0" prefHeight="474.0" prefWidth="606.0" visible="false">
+               <children>
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="23.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ALL FRIENDS" wrappingWidth="116.53668212890625" />
+                  <Line endX="505.39996337890625" layoutX="101.0" layoutY="47.0" startX="-100.0" stroke="#535353" />
+                  <ScrollPane hbarPolicy="NEVER" layoutY="48.0" prefHeight="426.0" prefWidth="608.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="428.0" prefWidth="609.0" style="-fx-background-color: #36393f;">
+                           <children>
+                              <VBox fx:id="allFriends" layoutX="23.0" layoutY="21.0" prefHeight="405.0" prefWidth="568.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="allFriends0Pane" layoutX="2.0" layoutY="46.0" prefHeight="466.0" prefWidth="606.0" visible="false">
+               <children>
+                  <ImageView fitHeight="188.0" fitWidth="256.0" layoutX="175.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/discordMainPage.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Button layoutX="414.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#makeBlock" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: #e74c3c;" text="Block" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <AnchorPane fx:id="blockPane" layoutX="2.0" layoutY="46.0" prefHeight="474.0" prefWidth="612.0" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="26.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BLOCK" />
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="26.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can block a user with their Discord username." wrappingWidth="270.13671875" />
+                  <TextField fx:id="searchBlockName" layoutX="26.0" layoutY="81.0" prefHeight="36.0" prefWidth="568.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Button layoutX="451.0" layoutY="85.0" mnemonicParsing="false" onMouseClicked="#blockUser" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Block" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="485.00006103515625" layoutX="127.0" layoutY="149.0" startX="-127.0" stroke="#5b5b5b" />
+                  <ImageView fitHeight="162.0" fitWidth="237.0" layoutX="192.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/blockPage.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="blockedSuccess" fill="#1f8b4c" fontSmoothingType="LCD" layoutX="26.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User successfully blocked." visible="false" />
+                  <Text fx:id="wrongBlock" fill="#e74c3c" fontSmoothingType="LCD" layoutX="26.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hm, didn't work. Double check that the capitalisation, spelling, any spaces and numbers are correct." visible="false" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="77.0" prefHeight="521.0" prefWidth="230.0" style="-fx-background-color: #2C2F33;">
+         <children>
+            <AnchorPane layoutX="-1.0" layoutY="440.0" prefHeight="82.0" prefWidth="230.0" style="-fx-background-color: #23272A;">
+               <children>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="192.0" layoutY="34.0" onMouseClicked="#callSettingPage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/setting.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="166.0" layoutY="34.0" onMouseClicked="#muteHeadSet" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/headset.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="144.0" layoutY="34.0" onMouseClicked="#muteMic" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/mic.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Circle fx:id="myImage" fill="DODGERBLUE" layoutX="32.0" layoutY="41.0" onMouseClicked="#editStatus" radius="24.0" stroke="BLACK" strokeType="INSIDE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Circle>
+                  <Text fx:id="myUsername" fill="WHITE" fontSmoothingType="LCD" layoutX="62.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="69.81884765625" />
+                  <Line fx:id="micLine" endX="-88.0" endY="-8.94921875" layoutX="249.0" layoutY="41.0" onMouseClicked="#muteMic" startX="-112.5999755859375" startY="9.20001220703125" stroke="#f70505" visible="false" />
+                  <Line fx:id="headSetLine" endX="-79.79998779296875" endY="-16.4000244140625" layoutX="264.0" layoutY="50.0" onMouseClicked="#muteHeadSet" startX="-102.29290771484375" startY="0.9071044921875" stroke="#f70505" visible="false" />
+                  <Circle fx:id="greenCircle" fill="#21ae2a" layoutX="47.0" layoutY="57.0" onMouseClicked="#editStatus" radius="7.0" stroke="BLACK" strokeType="INSIDE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Circle>
+                  <Circle fx:id="grayCircle" fill="#5e5a5a" layoutX="47.0" layoutY="57.0" onMouseClicked="#editStatus" radius="7.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Circle>
+                  <Circle fx:id="blackCircle" layoutX="47.0" layoutY="57.0" onMouseClicked="#editStatus" radius="2.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Circle>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="DirectMessagesColumnPane" minHeight="0.0" minWidth="0.0" prefHeight="434.0" prefWidth="229.0" style="-fx-background-color: #2C2F33;">
+               <children>
+                  <Button layoutX="8.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#showFriendsPage" onMouseEntered="#buttonEntered2" onMouseExited="#buttonEntered" prefHeight="36.0" prefWidth="123.0" style="-fx-background-color: #2C2F33;" text="Friends" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="36.0" fitWidth="30.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/friend.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DIRECT MESSAGES" wrappingWidth="123.73670196533203" />
+                  <ImageView fitHeight="14.0" fitWidth="16.0" layoutX="190.0" layoutY="51.0" onMouseClicked="#showAddPrivateChatPage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/plus.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="196.0" layoutY="17.0" onMouseClicked="#refresh" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/refresh.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="friendsInfo" hbarPolicy="NEVER" layoutX="-1.0" layoutY="76.0" prefHeight="361.0" prefWidth="230.0" style="-fx-background-color: #2C2F33; -fx-border-color: #2C2F33;" visible="false">
+               <content>
+                  <VBox fx:id="directMessages" prefHeight="359.0" prefWidth="222.0" style="-fx-background-color: #2C2F33;" />
+               </content>
+            </ScrollPane>
+            <AnchorPane fx:id="ServerChatsPane" layoutX="-1.0" layoutY="1.0" prefHeight="442.0" prefWidth="230.0" visible="false">
+               <children>
+                  <ScrollPane hbarPolicy="NEVER" layoutX="16.0" layoutY="47.0" prefHeight="395.0" prefWidth="212.0" style="-fx-background-color: #2C2F33; -fx-border-color: #2C2F33;">
+                     <content>
+                        <VBox fx:id="serverChats" prefHeight="396.0" prefWidth="209.0" style="-fx-background-color: #2C2F33;" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="serverNameButton" layoutX="-1.0" mnemonicParsing="false" onMouseClicked="#showPageMakeChangeInServer" onMouseEntered="#changeColorEnter" onMouseExited="#changeColorExit2" prefHeight="48.0" prefWidth="230.0" style="-fx-background-color: #23272A;" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="202.0" layoutY="17.0" onMouseClicked="#refreshServersChannels" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/refresh.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children></AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="changeStatus" layoutX="92.0" layoutY="196.0" prefHeight="235.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+         <children>
+            <Button layoutX="14.0" layoutY="37.0" mnemonicParsing="false" onMouseClicked="#makeStatusOnline" onMouseEntered="#buttonEntered1" onMouseExited="#buttonExited1" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #23272A;" text="Online" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="14.0" layoutY="97.0" mnemonicParsing="false" onMouseClicked="#makeStatusIdle" onMouseEntered="#buttonEntered1" onMouseExited="#buttonExited1" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #23272A;" text="Idle" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="14.0" layoutY="139.0" mnemonicParsing="false" onMouseClicked="#makeStatusDoNotDisturb" onMouseEntered="#buttonEntered1" onMouseExited="#buttonExited1" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #23272A;" text="Do Not Disturb" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="13.0" layoutY="185.0" mnemonicParsing="false" onMouseClicked="#makeStatusInvisible" onMouseEntered="#buttonEntered1" onMouseExited="#buttonExited1" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #23272A;" text="Invisible" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Line endX="100.0" layoutX="93.0" layoutY="82.0" startX="-87.0" stroke="#4e4e4e" />
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="170.0" layoutY="14.0" onMouseClicked="#exitChangeStatus" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="privateChatPane" layoutX="305.0" layoutY="-1.0" prefHeight="521.0" prefWidth="616.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutY="118.0" prefHeight="334.0" prefWidth="616.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;">
+               <content>
+                  <VBox fx:id="privateChatMessages" prefHeight="330.0" prefWidth="614.0" style="-fx-background-color: #36393f;" />
+               </content>
+            </ScrollPane>
+            <Circle fx:id="privateChatImage" fill="DODGERBLUE" layoutX="74.0" layoutY="51.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text fx:id="privateChatName" fill="WHITE" fontSmoothingType="LCD" layoutX="116.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="151.73666381835938">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Line endX="501.0" layoutX="115.0" layoutY="100.0" startX="-114.99996948242188" stroke="#565656" />
+            <TextField fx:id="messageField" layoutX="2.0" layoutY="480.0" prefHeight="36.0" prefWidth="610.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="552.0" layoutY="488.0" onMouseClicked="#uploadFile" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/plus.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="578.0" layoutY="485.0" onMouseClicked="#sendMessage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/sendMessage.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="583.0" layoutY="21.0" onMouseClicked="#refreshPrivateChatPage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/refresh.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <AnchorPane fx:id="moreMessagePane" layoutX="420.0" layoutY="78.0" prefHeight="30.0" prefWidth="174.0" visible="false">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="38.0" layoutY="-1.0" onMouseClicked="#reactionMessage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/reaction.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="40.0" layoutY="-1.0" onMouseClicked="#pinMessage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/pin.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="78.0" layoutY="-1.0" onMouseClicked="#editMessage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/edit.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="114.0" layoutY="-1.0" onMouseClicked="#deleteMessage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/delete.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="150.0" layoutY="1.0" onMouseClicked="#exitMorePane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="reactionPane" layoutX="381.0" layoutY="37.0" prefHeight="27.0" prefWidth="152.0" visible="false">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" layoutY="-2.0" onMouseClicked="#addHeart" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/heart.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="45.0" layoutY="-3.0" onMouseClicked="#addLike" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/like.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="92.0" onMouseClicked="#addDislike" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/dislike.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="134.0" layoutY="1.0" onMouseClicked="#exitReactionPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fx:id="privateChatIdText" fill="#b1b1b1" fontSmoothingType="LCD" layoutX="116.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="176.80000000000018">
+               <font>
+                  <Font size="16.0" />
+               </font></Text>
+            <Text fx:id="pin" fill="WHITE" fontSmoothingType="LCD" layoutX="18.0" layoutY="468.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="578.3999999999999">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <AnchorPane fx:id="editMessagePane" layoutX="342.0" layoutY="4.0" prefHeight="66.0" prefWidth="200.0" style="-fx-background-color: #2C2F33;" visible="false">
+               <children>
+                  <TextField fx:id="editedMessageField" layoutX="14.0" layoutY="33.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Message" />
+                  <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="170.0" layoutY="33.0" onMouseClicked="#editSelectedMessage" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/sendMessage.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="173.0" layoutY="7.0" onMouseClicked="#exitEditMessagePane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="createPrivateChatPage" layoutX="307.0" layoutY="44.0" prefHeight="178.0" prefWidth="221.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Private Chat">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="createPrivateChatSearchField" layoutX="13.0" layoutY="45.0" prefHeight="36.0" prefWidth="194.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Button layoutX="46.0" layoutY="123.0" mnemonicParsing="false" onMouseClicked="#searchForCreateChat" prefHeight="26.0" prefWidth="127.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Create Chat" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="199.0" layoutY="6.0" onMouseClicked="#exitCreatePrivateChatPage" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="wrongInfoCreatePrivateChat" fill="#e74c3c" fontSmoothingType="LCD" layoutX="13.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wrong information!" visible="false" wrappingWidth="116.53668212890625">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="existedPrivateChat" fill="#e74c3c" fontSmoothingType="LCD" layoutX="14.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you have a private chat with this user from before!" visible="false" wrappingWidth="200.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="userBlock" fill="#e74c3c" fontSmoothingType="LCD" layoutX="13.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you have blocked this user!" visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+            <Text fx:id="blockMe" fill="#e74c3c" fontSmoothingType="LCD" layoutX="14.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you are blocked by this user! " visible="false">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="522.0" prefWidth="76.0" style="-fx-background-color: #23272A;">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutY="103.0" prefHeight="378.0" prefWidth="76.0" style="-fx-background-color: #23272A; -fx-border-color: #23272A;">
+               <content>
+                  <VBox fx:id="serverIcons" prefHeight="377.0" prefWidth="59.0" style="-fx-background-color: #23272A;">
+                     <padding>
+                        <Insets left="6.0" />
+                     </padding></VBox>
+               </content>
+            </ScrollPane>
+            <Circle fx:id="callFriendsIcon" fill="DODGERBLUE" layoutX="38.0" layoutY="24.0" onMouseClicked="#callFriendsPane" radius="18.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Circle>
+            <Circle fx:id="addServerIcon" fill="DODGERBLUE" layoutX="38.0" layoutY="70.0" onMouseClicked="#addServer" radius="18.0" stroke="BLACK" strokeType="INSIDE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Circle>
+            <Button layoutY="481.0" mnemonicParsing="false" onMouseClicked="#refreshServers" onMouseEntered="#buttonEntered1" onMouseExited="#buttonExited" prefHeight="36.0" prefWidth="74.0" style="-fx-background-color: #23272A;" text="Refresh" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children></AnchorPane>
+      <AnchorPane fx:id="createServerPane" layoutX="92.0" layoutY="44.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Server">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#b1b1b1" fontSmoothingType="LCD" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a name for your server." />
+            <TextField fx:id="serverNameField" layoutX="14.0" layoutY="59.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Button layoutX="36.0" layoutY="147.0" mnemonicParsing="false" onMouseClicked="#createServer" prefHeight="26.0" prefWidth="129.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Create Server" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="178.0" layoutY="8.0" onMouseClicked="#exitCreateServerPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="serverSettingPane" layoutX="92.0" layoutY="73.0" prefHeight="188.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Setting">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Button layoutX="13.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#showInvitePeoplePane" onMouseEntered="#buttonEntered1" onMouseExited="#changeColorExit2" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #36393f;" text="Invite People" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="14.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#showCreateTextChannelPane" onMouseEntered="#buttonEntered1" onMouseExited="#changeColorExit2" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #36393f;" text="Create Text Channel" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="13.0" layoutY="136.0" mnemonicParsing="false" onMouseClicked="#showCreateVoiceChannelPane" onMouseEntered="#buttonEntered1" onMouseExited="#changeColorExit2" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #36393f;" text="Create Voice Channel" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="168.0" layoutY="10.0" onMouseClicked="#exitServerSettingPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/esc.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="serverMessagesPane" layoutX="305.0" layoutY="1.0" prefHeight="521.0" prefWidth="491.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <Text fx:id="textChannelTitle" fill="WHITE" fontSmoothingType="LCD" layoutX="31.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Line endX="384.199951171875" endY="-7.62939453125E-6" layoutX="107.0" layoutY="61.0" startX="-105.39999389648438" startY="-7.62939453125E-6" stroke="#515151" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="11.0" layoutY="94.0" prefHeight="354.0" prefWidth="484.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;">
+               <content>
+                  <VBox fx:id="textChannelMessages" prefHeight="352.0" prefWidth="478.0" style="-fx-background-color: #36393f;" />
+               </content>
+            </ScrollPane>
+            <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="461.0" layoutY="19.0" onMouseClicked="#refreshTextChannel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/refresh.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <TextField fx:id="textChannelMessageField" layoutX="9.0" layoutY="475.0" prefHeight="36.0" prefWidth="474.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+            <Text fx:id="textChannelPinMessage" fill="WHITE" fontSmoothingType="LCD" layoutX="11.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="24.0" fitWidth="23.0" layoutX="457.0" layoutY="481.0" onMouseClicked="#sendMessageToTextChannel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/sendMessage.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="24.0" layoutX="426.0" layoutY="481.0" onMouseClicked="#sendFileToTextChannel" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/plus.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <AnchorPane fx:id="invitePeoplePane" layoutX="232.0" layoutY="25.0" prefHeight="138.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invite People">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="invitePeopleField" layoutX="14.0" layoutY="44.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #36393f; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="172.0" layoutY="13.0" onMouseClicked="#exitInvitePeoplePane" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="42.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#invitePeopleToServer" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #206694;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="wrongInvitePeople" fill="#e74c3c" fontSmoothingType="LCD" layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="only the owner of server can add people to server!" visible="false" wrappingWidth="174.39999999999986">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="successInvitePeople" fill="#1f8b4c" fontSmoothingType="LCD" layoutX="15.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="admin successfully added!" visible="false" wrappingWidth="156.5859375000001">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="createVoiceChannelPane" layoutX="232.0" layoutY="25.0" prefHeight="138.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Voice Channel">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="createVoiceChannelField" layoutX="16.0" layoutY="42.0" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: #36393f; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="168.0" layoutY="13.0" onMouseClicked="#exitCreateVoiceChannelPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Button layoutX="41.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#createVoiceChannel" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #206694;" text="Create" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fx:id="wrongCreateVoiceChat" fill="#e74646" fontSmoothingType="LCD" layoutX="14.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you aren't allowed to create channel in this server!" visible="false" wrappingWidth="156.5859375">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="successCreateVoiceChannel" fill="#15bc31" fontSmoothingType="LCD" layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="voice channel created!" visible="false">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="createTextChannelPane" layoutX="232.0" layoutY="25.0" prefHeight="138.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Text Channel">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="createTextChannelField" layoutX="13.0" layoutY="46.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #36393f; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Button layoutX="41.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#createTextChannel" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #206694;" text="Create" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="172.0" layoutY="13.0" onMouseClicked="#exitCreateTextChannelPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Text fx:id="wrongCreateTextChannel" fill="#e74646" fontSmoothingType="LCD" layoutX="14.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you aren't allowed to create channel in this server!" visible="false" wrappingWidth="176.79999999999995">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="successCreateTextChannel" fill="#15bc31" fontSmoothingType="LCD" layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text channel created!" visible="false">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="inviteAdminPane" layoutX="232.0" layoutY="25.0" prefHeight="138.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invite Admin">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="inviteAdminField" layoutX="16.0" layoutY="49.0" prefHeight="26.0" prefWidth="168.0" style="-fx-background-color: #36393f; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Button layoutX="40.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#inviteAdmin" prefHeight="26.0" prefWidth="118.0" style="-fx-background-color: #206694;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="176.0" layoutY="13.0" onMouseClicked="#exitInviteAdminPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Text fx:id="wrongInviteAdmin" fill="#e74646" fontSmoothingType="LCD" layoutX="16.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="only owner can add admin to channel." visible="false" wrappingWidth="167.9999999999999">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="succressInviteAdmin" fill="#15bc31" fontSmoothingType="LCD" layoutX="16.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="admin added to channel!" visible="false">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="inviteUserPane" layoutX="232.0" layoutY="25.0" prefHeight="138.0" prefWidth="200.0" style="-fx-background-color: #23272A;" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invite User">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="inviteUserField" layoutX="14.0" layoutY="44.0" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #36393f; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Button layoutX="41.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#inviteUser" prefHeight="26.0" prefWidth="117.0" style="-fx-background-color: #206694;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="178.0" layoutY="6.0" onMouseClicked="#exitInviteUserPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Text fx:id="wrongInviteUser" fill="#e74646" fontSmoothingType="LCD" layoutX="14.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="you aren't allowed to add user to this channel!" visible="false" wrappingWidth="174.39999999999975">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="successInviteUser" fill="#15bc31" fontSmoothingType="LCD" layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="user added to channel!" visible="false">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Button layoutX="11.0" layoutY="61.0" mnemonicParsing="false" onMouseClicked="#showInviteUserOrAdminPane" onMouseEntered="#buttonEntered" onMouseExited="#buttonExited" style="-fx-background-color: #36393f;" text="..." textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <AnchorPane fx:id="inviteAdminOrUserToChat" layoutX="38.0" layoutY="19.0" prefHeight="145.0" prefWidth="194.0" style="-fx-background-color: #2C2F33;" visible="false">
+               <children>
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invite People">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="14.0" layoutY="48.0" mnemonicParsing="false" onMouseClicked="#showInviteUserPane" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: #36393f;" text="Invite User" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#showInviteAdminPane" prefHeight="28.0" prefWidth="162.0" style="-fx-background-color: #36393f;" text="Invite Admin" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="16.0" fitWidth="14.0" layoutX="166.0" layoutY="11.0" onMouseClicked="#exitInviteAdminOrUserToChat" pickOnBounds="true" preserveRatio="true">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="moreMessagePane1" layoutX="292.0" layoutY="58.0" prefHeight="30.0" prefWidth="174.0" visible="false">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="38.0" layoutY="-1.0" onMouseClicked="#reactionMessageText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/reaction.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="40.0" layoutY="-1.0" onMouseClicked="#pinMessageText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/pin.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="78.0" layoutY="-1.0" onMouseClicked="#editMessageText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/edit.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="114.0" layoutY="-1.0" onMouseClicked="#deleteMessageText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/delete.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="26.0" fitWidth="33.0" layoutX="150.0" layoutY="1.0" onMouseClicked="#exitMoreTextPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="reactionPane1" layoutX="243.0" layoutY="23.0" prefHeight="27.0" prefWidth="152.0" visible="false">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" layoutY="-2.0" onMouseClicked="#addHeartText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/heart.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="45.0" layoutY="-3.0" onMouseClicked="#addLikeText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/like.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="92.0" onMouseClicked="#addDislikeText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/dislike.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="134.0" layoutY="1.0" onMouseClicked="#exitReactionTextPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fx:id="wrongPin" fill="#e13737" fontSmoothingType="LCD" layoutX="323.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="only admins can pin message" visible="false" />
+            <Text fx:id="wrongSendMessage" fill="#d93f3f" fontSmoothingType="LCD" layoutX="321.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="only admins can send message" visible="false" />
+            <AnchorPane fx:id="editMessagePane1" layoutX="223.0" layoutY="28.0" prefHeight="66.0" prefWidth="200.0" style="-fx-background-color: #2C2F33;" visible="false">
+               <children>
+                  <TextField fx:id="editedMessageField1" layoutX="14.0" layoutY="33.0" style="-fx-background-color: #23272A; -fx-background-radius: 5Px; -fx-text-fill: white;" />
+                  <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Message" />
+                  <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="170.0" layoutY="33.0" onMouseClicked="#editSelectedMessageText" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/sendMessage.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="173.0" layoutY="7.0" onMouseClicked="#exitEditMessageTextPane" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/esc.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <Text fx:id="doesntBelong" fill="#e14444" fontSmoothingType="LCD" layoutX="292.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="this message doesn't belong to you" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="serverAdminsPane" layoutX="796.0" layoutY="1.0" prefHeight="521.0" prefWidth="127.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="19.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Admins">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Line endX="75.199951171875" endY="-7.62939453125E-6" layoutX="50.0" layoutY="61.0" startX="-47.800048828125" startY="-7.62939453125E-6" stroke="#5e5e5e" />
+            <ScrollPane hbarPolicy="NEVER" layoutX="10.0" layoutY="79.0" prefHeight="442.0" prefWidth="118.0" style="-fx-background-color: #2C2F33; -fx-border-color: #2C2F33;">
+               <content>
+                  <VBox fx:id="serverAdmins" prefHeight="441.0" prefWidth="115.0" style="-fx-background-color: #2C2F33;" />
+               </content></ScrollPane>
+            <ImageView fitHeight="16.0" fitWidth="14.0" layoutX="108.0" layoutY="19.0" onMouseClicked="#refreshServerAdmins" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/refresh.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="textChannelUsersPane" layoutX="803.0" layoutY="1.0" prefHeight="252.0" prefWidth="123.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutX="7.0" layoutY="31.0" prefHeight="200.0" prefWidth="118.0" style="-fx-background-color: #2C2F33; -fx-border-color: #2C2F33;">
+               <content>
+                  <VBox fx:id="textChannelUsers" prefHeight="210.0" prefWidth="114.0" style="-fx-background-color: #2C2F33;" />
+               </content>
+            </ScrollPane>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERS">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="14.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINS">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="textChannelAdminsPane" layoutX="809.0" layoutY="254.0" prefHeight="269.0" prefWidth="118.0" style="-fx-background-color: #2C2F33;" visible="false">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutX="-1.0" prefHeight="262.0" prefWidth="118.0" style="-fx-background-color: #2C2F33; -fx-border-color: #2C2F33;">
+               <content>
+                  <VBox fx:id="textChannelAdmins" prefHeight="258.0" prefWidth="116.0" style="-fx-background-color: #2C2F33;" />
+               </content>
+            </ScrollPane>
+            <Button layoutX="5.0" layoutY="214.0" mnemonicParsing="false" onMouseClicked="#refreshAdminsAndUsers" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Refresh" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></AnchorPane>
+      <AnchorPane fx:id="VoiceChannelPane" layoutX="305.0" layoutY="1.0" prefHeight="522.0" prefWidth="503.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="16.0" prefHeight="455.0" prefWidth="484.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;">
+               <content>
+                  <VBox prefHeight="458.0" prefWidth="484.0" style="-fx-background-color: #36393f;" />
+               </content>
+            </ScrollPane>
+            <Button layoutX="201.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#removeFromVoiceChannel" prefHeight="26.0" prefWidth="101.0" style="-fx-background-color: #206694; -fx-background-radius: 5Px;" text="Exit" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
