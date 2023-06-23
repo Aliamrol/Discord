@@ -1,9 +1,7 @@
 module com.example.calculator {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.media;
-    requires rt;
-    requires jfxrt;
+//    requires javafx.media;
 
 
     opens com.example.calculator to javafx.fxml;

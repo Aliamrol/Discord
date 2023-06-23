@@ -22,7 +22,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -337,18 +341,33 @@ public class DiscordMainPage {
      *
      * @param client the client
      */
-    public void setClient (Client client){
+    public void setClient (Client client) throws FileNotFoundException {
         this.client = client;
         myUsername.setText(client.getUser().getUsername());
         myImage.setStroke(Color.valueOf( "#23272A"));
-        Image image = new Image(client.getUser().getPictureAddress());
+        String s = client.getUser().getPictureAddress();
+        InputStream in = new FileInputStream(s);
+        Image image = new Image(in);
+
+
+
+
+//        Image image = new Image(client.getUser().getPictureAddress());
+
+
+
         myImage.setFill(new ImagePattern(image));
         addServerIcon.setStroke(Color.valueOf( "#23272A"));
-        Image addServerPic = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\greenPlus.png");
+        InputStream inAdd = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/greenPlus.png");
+        Image addServerPic = new Image(inAdd);
+//        Image addServerPic = new Image("greenPlus.png");
         addServerIcon.setFill(new ImagePattern(addServerPic));
         callFriendsIcon.setStroke(Color.valueOf( "#23272A"));
-        Image discordIcon = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\discordUserLogo.png");
+        InputStream inDis = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/discordUserLogo.png");
+        Image discordIcon = new Image(inDis);
+//        Image discordIcon = new Image("discordUserLogo.png");
         callFriendsIcon.setFill(new ImagePattern(discordIcon));
+        System.out.println("yesyesyeysyesyeyesyeyesyes");
         switch (client.getUser().getState()) {
             case "Online" -> {
                 greenCircle.setVisible(true);
@@ -359,14 +378,18 @@ public class DiscordMainPage {
                 greenCircle.setVisible(true);
                 blackCircle.setVisible(false);
                 grayCircle.setVisible(false);
-                Image image1 = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\idle.png");
+                InputStream inimage1 = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/idle.png");
+                Image image1 = new Image(inimage1);
+//                Image image1 = new Image("idle.png");
                 greenCircle.setFill(new ImagePattern(image1));
             }
             case "Do Not Disturb" -> {
                 greenCircle.setVisible(true);
                 blackCircle.setVisible(false);
                 grayCircle.setVisible(false);
-                Image image2 = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\doNotDisturb.png");
+                InputStream inimage2 = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/doNotDisturb.png");
+                Image image2 = new Image(inimage2);
+//                Image image2 = new Image("doNotDisturb.png");
                 greenCircle.setFill(new ImagePattern(image2));
             }
             case "Invisible" -> {
@@ -390,7 +413,8 @@ public class DiscordMainPage {
             text.setFill(Color.valueOf("white"));
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image1 = new Image(client.getDataBase().returnPictureAddress(friendName));
+            InputStream inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(friendName));
+            Image image1 = new Image(inimage1);
             circle.setFill(new ImagePattern(image1));
             circle.setRadius(18.0);
             row.setSpacing(15.0);
@@ -417,7 +441,13 @@ public class DiscordMainPage {
                     FriendsMainPane.setVisible(false);
                     privateChatPane.setVisible(true);
                     privateChatImage.setStroke(Color.valueOf( "#23272A"));
-                    Image image = new Image(client.getDataBase().returnPictureAddress(friendName));
+                    InputStream inimage = null;
+                    try {
+                        inimage = new FileInputStream(client.getDataBase().returnPictureAddress(friendName));
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Image image = new Image(inimage);
                     privateChatImage.setFill(new ImagePattern(image));
                     privateChatName.setText(friendName);
                     privateChatIdText.setText("Chat ID: " + pv.getId());
@@ -518,7 +548,7 @@ public class DiscordMainPage {
      * @param event the event
      */
     @FXML
-    void onlineClicked(MouseEvent event) {
+    void onlineClicked(MouseEvent event) throws FileNotFoundException {
         onlineFriendsPane.setVisible(false);
         onlineFriends0Pane.setVisible(false);
         FriendRequestPane.setVisible(false);
@@ -553,7 +583,8 @@ public class DiscordMainPage {
                     text.setFill(Color.valueOf("white"));
                     Circle circle = new Circle();
                     circle.setStroke(Color.valueOf("#23272A"));
-                    Image image = new Image(client.getDataBase().returnPictureAddress(name));
+                    InputStream inmage = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+                    Image image = new Image(inmage);
                     circle.setFill(new ImagePattern(image));
                     circle.setRadius(18.0);
                     Button remove = new Button("Remove From Friends");
@@ -658,7 +689,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void showFriendRequests(MouseEvent mouseEvent) {
+    public void showFriendRequests(MouseEvent mouseEvent) throws FileNotFoundException {
         onlineFriendsPane.setVisible(false);
         onlineFriends0Pane.setVisible(false);
         FriendRequestPane.setVisible(false);
@@ -690,7 +721,8 @@ public class DiscordMainPage {
                 text.setFill(Color.valueOf("white"));
                 Circle circle = new Circle();
                 circle.setStroke(Color.valueOf( "#23272A"));
-                Image image = new Image(client.getDataBase().returnPictureAddress(name));
+                InputStream inimage = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+                Image image = new Image(inimage);
                 circle.setFill(new ImagePattern(image));
                 circle.setRadius(18.0);
                 Button accept = new Button("Accept");
@@ -739,7 +771,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void showAllFriends(MouseEvent mouseEvent) {
+    public void showAllFriends(MouseEvent mouseEvent) throws FileNotFoundException {
         onlineFriendsPane.setVisible(false);
         onlineFriends0Pane.setVisible(false);
         FriendRequestPane.setVisible(false);
@@ -772,7 +804,8 @@ public class DiscordMainPage {
                 text.setFill(Color.valueOf("white"));
                 Circle circle = new Circle();
                 circle.setStroke(Color.valueOf( "#23272A"));
-                Image image = new Image(client.getDataBase().returnPictureAddress(name));
+                InputStream inimage = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+                Image image = new Image(inimage);
                 circle.setFill(new ImagePattern(image));
                 circle.setRadius(18.0);
                 Button remove = new Button("Remove From Friends");
@@ -806,7 +839,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void showBlocked(MouseEvent mouseEvent) {
+    public void showBlocked(MouseEvent mouseEvent) throws FileNotFoundException {
         onlineFriendsPane.setVisible(false);
         onlineFriends0Pane.setVisible(false);
         FriendRequestPane.setVisible(false);
@@ -838,7 +871,8 @@ public class DiscordMainPage {
                 text.setFill(Color.valueOf("white"));
                 Circle circle = new Circle();
                 circle.setStroke(Color.valueOf( "#23272A"));
-                Image image = new Image(client.getDataBase().returnPictureAddress(name));
+                InputStream inimage = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+                Image image = new Image(inimage);
                 circle.setFill(new ImagePattern(image));
                 circle.setRadius(18.0);
                 Button unblock = new Button("Unblock");
@@ -935,7 +969,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void makeStatusIdle(MouseEvent mouseEvent) {
+    public void makeStatusIdle(MouseEvent mouseEvent) throws FileNotFoundException {
         client.getUser().setState("Idle");
         client.getDataBase().updateUser(client.getUser());
         client.outputClientDataBase();
@@ -943,7 +977,9 @@ public class DiscordMainPage {
         greenCircle.setVisible(true);
         blackCircle.setVisible(false);
         grayCircle.setVisible(false);
-        Image image = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\idle.png");
+        InputStream in = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/idle.png");
+        Image image = new Image(in);
+//        Image image = new Image("idle.png");
         greenCircle.setFill(new ImagePattern(image));
         changeStatus.setVisible(false);
     }
@@ -953,7 +989,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void makeStatusDoNotDisturb(MouseEvent mouseEvent) {
+    public void makeStatusDoNotDisturb(MouseEvent mouseEvent) throws FileNotFoundException {
         client.getUser().setState("Do Not Disturb");
         client.getDataBase().updateUser(client.getUser());
         client.outputClientDataBase();
@@ -961,7 +997,9 @@ public class DiscordMainPage {
         greenCircle.setVisible(true);
         blackCircle.setVisible(false);
         grayCircle.setVisible(false);
-        Image image = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\doNotDisturb.png");
+        InputStream in = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/doNotDisturb.png");
+        Image image = new Image(in);
+//        Image image = new Image("doNotDisturb.png");
         greenCircle.setFill(new ImagePattern(image));
         changeStatus.setVisible(false);
     }
@@ -1047,7 +1085,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void searchForCreateChat(MouseEvent mouseEvent) {
+    public void searchForCreateChat(MouseEvent mouseEvent) throws FileNotFoundException {
         blockMe.setVisible(false);
         userBlock.setVisible(false);
         existedPrivateChat.setVisible(false);
@@ -1079,7 +1117,8 @@ public class DiscordMainPage {
                     text.setFill(Color.valueOf("white"));
                     Circle circle = new Circle();
                     circle.setStroke(Color.valueOf( "#23272A"));
-                    Image image = new Image(client.getDataBase().returnPictureAddress(friendName));
+                    InputStream inimage = new FileInputStream(client.getDataBase().returnPictureAddress(friendName));
+                    Image image = new Image(inimage);
                     circle.setFill(new ImagePattern(image));
                     circle.setRadius(18.0);
                     row.setSpacing(15.0);
@@ -1106,7 +1145,13 @@ public class DiscordMainPage {
                             FriendsMainPane.setVisible(false);
                             privateChatPane.setVisible(true);
                             privateChatImage.setStroke(Color.valueOf( "#23272A"));
-                            Image image = new Image(client.getDataBase().returnPictureAddress(friendName));
+                            InputStream inimage = null;
+                            try {
+                                inimage = new FileInputStream(client.getDataBase().returnPictureAddress(friendName));
+                            } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Image image = new Image(inimage);
                             privateChatImage.setFill(new ImagePattern(image));
                             privateChatName.setText(friendName);
                             privateChatIdText.setText("Chat ID: " + flag);
@@ -1184,7 +1229,13 @@ public class DiscordMainPage {
                                 }
                                 Circle circle = new Circle();
                                 circle.setStroke(Color.valueOf( "#23272A"));
-                                Image image1 = new Image(client.getDataBase().returnPictureAddress(name));
+                                InputStream inimage1 = null;
+                                try {
+                                    inimage1 = new FileInputStream((client.getDataBase().returnPictureAddress(name)));
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Image image1 = new Image(inimage1);
                                 circle.setFill(new ImagePattern(image1));
                                 circle.setRadius(18.0);
                                 VBox column = new VBox();
@@ -1201,7 +1252,14 @@ public class DiscordMainPage {
                                 idText.setFill(Color.valueOf("white"));
                                 VBox heartsEmojis = new VBox();
                                 ImageView imageView1 = new ImageView();
-                                Image emojiHeart = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\heart.png");
+                                InputStream inheart = null;
+                                try {
+                                    inheart = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/heart.png");
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Image emojiHeart = new Image(inheart);
+//                                Image emojiHeart = new Image("heart.png");
                                 imageView1.setImage(emojiHeart);
                                 imageView1.setFitWidth(10);
                                 imageView1.setFitHeight(10);
@@ -1211,7 +1269,14 @@ public class DiscordMainPage {
                                 heartsEmojis.getChildren().add(number1);
                                 VBox likesEmojis = new VBox();
                                 ImageView imageView2 = new ImageView();
-                                Image emojiLike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\like.png");
+                                InputStream inLike = null;
+                                try {
+                                    inLike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/like.png");
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Image emojiLike = new Image(inLike);
+//                                Image emojiLike = new Image("like.png");
                                 imageView2.setImage(emojiLike);
                                 imageView2.setFitWidth(10);
                                 imageView2.setFitHeight(10);
@@ -1221,7 +1286,14 @@ public class DiscordMainPage {
                                 likesEmojis.getChildren().add(number2);
                                 VBox dislikesEmojis = new VBox();
                                 ImageView imageView3 = new ImageView();
-                                Image emojiDislike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\dislike.png");
+                                InputStream inDisLike = null;
+                                try {
+                                    inDisLike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/dislike.png");
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                Image emojiDislike = new Image(inDisLike);
+//                                Image emojiDislike = new Image("dislike.png");
                                 imageView3.setImage(emojiDislike);
                                 imageView3.setFitWidth(10);
                                 imageView3.setFitHeight(10);
@@ -1286,7 +1358,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void refresh(MouseEvent mouseEvent) {
+    public void refresh(MouseEvent mouseEvent) throws FileNotFoundException {
         directMessages.getChildren().clear();
         ArrayList<PrivateChat> myPvs = client.getDataBase().checkPrivateChats(client.getUser().getId());
         for(PrivateChat pv : myPvs){
@@ -1303,7 +1375,8 @@ public class DiscordMainPage {
             text.setFill(Color.valueOf("white"));
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image1 = new Image(client.getDataBase().returnPictureAddress(friendName));
+            InputStream inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(friendName));
+            Image image1 = new Image(inimage1);
             circle.setFill(new ImagePattern(image1));
             circle.setRadius(18.0);
             row.setSpacing(15.0);
@@ -1330,7 +1403,13 @@ public class DiscordMainPage {
                     FriendsMainPane.setVisible(false);
                     privateChatPane.setVisible(true);
                     privateChatImage.setStroke(Color.valueOf( "#23272A"));
-                    Image image = new Image(client.getDataBase().returnPictureAddress(friendName));
+                    InputStream inimage = null;
+                    try {
+                        inimage = new FileInputStream(client.getDataBase().returnPictureAddress(friendName));
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Image image = new Image(inimage);
                     privateChatImage.setFill(new ImagePattern(image));
                     privateChatName.setText(friendName);
                     privateChatIdText.setText("Chat ID: " + pv.getId());
@@ -1375,7 +1454,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void refreshPrivateChatPage(MouseEvent mouseEvent) {
+    public void refreshPrivateChatPage(MouseEvent mouseEvent) throws FileNotFoundException {
         String text = privateChatIdText.getText();
         int id = Integer.parseInt(text, 9, text.length(), 10);
         ArrayList<ChatMessage> messages = client.getDataBase().showMessagesPrivateChat(client.getUser().getId(), id);
@@ -1454,7 +1533,8 @@ public class DiscordMainPage {
             }
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image1 = new Image(client.getDataBase().returnPictureAddress(name));
+            InputStream inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+            Image image1 = new Image(inimage1);
             circle.setFill(new ImagePattern(image1));
             circle.setRadius(18.0);
             VBox column = new VBox();
@@ -1471,7 +1551,9 @@ public class DiscordMainPage {
             idText.setFill(Color.valueOf("white"));
             VBox heartsEmojis = new VBox();
             ImageView imageView1 = new ImageView();
-            Image emojiHeart = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\heart.png");
+            InputStream inHeart = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/heart.png");
+            Image emojiHeart = new Image(inHeart);
+//            Image emojiHeart = new Image("heart.png");
             imageView1.setImage(emojiHeart);
             imageView1.setFitWidth(10);
             imageView1.setFitHeight(10);
@@ -1482,7 +1564,9 @@ public class DiscordMainPage {
             heartsEmojis.getChildren().add(number1);
             VBox likesEmojis = new VBox();
             ImageView imageView2 = new ImageView();
-            Image emojiLike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\like.png");
+            InputStream inLike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/like.png");
+            Image emojiLike = new Image(inLike);
+//            Image emojiLike = new Image("like.png");
             imageView2.setImage(emojiLike);
             imageView2.setFitWidth(10);
             imageView2.setFitHeight(10);
@@ -1493,7 +1577,9 @@ public class DiscordMainPage {
             likesEmojis.getChildren().add(number2);
             VBox dislikesEmojis = new VBox();
             ImageView imageView3 = new ImageView();
-            Image emojiDislike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\dislike.png");
+            InputStream inDislike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/dislike.png");
+            Image emojiDislike = new Image(inDislike);
+//            Image emojiDislike = new Image("dislike.png");
             imageView3.setImage(emojiDislike);
             imageView3.setFitWidth(10);
             imageView3.setFitHeight(10);
@@ -1751,7 +1837,14 @@ public class DiscordMainPage {
                     if(chat instanceof ChatMessages) {
                         determine = 1;
                         ImageView imageView = new ImageView();
-                        Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\hashtag.png");
+                        InputStream inTextChannel = null;
+                        try {
+                            inTextChannel = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/hashtag.png");
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Image textChannel = new Image(inTextChannel);
+//                        Image textChannel = new Image("hashtag.png");
                         imageView.setImage(textChannel);
                         imageView.setFitWidth(12);
                         imageView.setFitHeight(12);
@@ -1769,7 +1862,14 @@ public class DiscordMainPage {
                     }
                     else {
                         ImageView imageView = new ImageView();
-                        Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\voice.png");
+                        InputStream intextChannel = null;
+                        try {
+                            intextChannel = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/voice.png");
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Image textChannel = new Image(intextChannel);
+//                        Image textChannel = new Image("voice.png");
                         imageView.setImage(textChannel);
                         imageView.setFitWidth(12);
                         imageView.setFitHeight(12);
@@ -1900,7 +2000,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void createTextChannel(MouseEvent mouseEvent) {
+    public void createTextChannel(MouseEvent mouseEvent) throws FileNotFoundException {
         String textChannelName = createTextChannelField.getText();
         int i = 0;
         String text = serverNameButton.getText();
@@ -1918,7 +2018,9 @@ public class DiscordMainPage {
             textChannels.setFill(Color.valueOf("white"));
             HBox row = new HBox();
             ImageView imageView = new ImageView();
-            Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\hashtag.png");
+            InputStream intextChannel = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/hashtag.png");
+            Image textChannel = new Image(intextChannel);
+//            Image textChannel = new Image("hashtag.png");
             imageView.setImage(textChannel);
             imageView.setFitWidth(12);
             imageView.setFitHeight(12);
@@ -2038,7 +2140,13 @@ public class DiscordMainPage {
                         }
                         Circle circle = new Circle();
                         circle.setStroke(Color.valueOf( "#23272A"));
-                        Image image1 = new Image(client.getDataBase().returnPictureAddress(name));
+                        InputStream inimage1 = null;
+                        try {
+                            inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Image image1 = new Image(inimage1);
                         circle.setFill(new ImagePattern(image1));
                         circle.setRadius(18.0);
                         VBox column = new VBox();
@@ -2055,7 +2163,14 @@ public class DiscordMainPage {
                         idText.setFill(Color.valueOf("white"));
                         VBox heartsEmojis = new VBox();
                         ImageView imageView1 = new ImageView();
-                        Image emojiHeart = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\heart.png");
+                        InputStream inheart = null;
+                        try {
+                            inheart = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/heart.png");
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Image emojiHeart = new Image(inheart);
+//                        Image emojiHeart = new Image("heart.png");
                         imageView1.setImage(emojiHeart);
                         imageView1.setFitWidth(10);
                         imageView1.setFitHeight(10);
@@ -2066,7 +2181,14 @@ public class DiscordMainPage {
                         heartsEmojis.getChildren().add(number1);
                         VBox likesEmojis = new VBox();
                         ImageView imageView2 = new ImageView();
-                        Image emojiLike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\like.png");
+                        InputStream inLike = null;
+                        try {
+                            inLike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/like.png");
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Image emojiLike = new Image(inLike);
+//                        Image emojiLike = new Image("like.png");
                         imageView2.setImage(emojiLike);
                         imageView2.setFitWidth(10);
                         imageView2.setFitHeight(10);
@@ -2077,7 +2199,14 @@ public class DiscordMainPage {
                         likesEmojis.getChildren().add(number2);
                         VBox dislikesEmojis = new VBox();
                         ImageView imageView3 = new ImageView();
-                        Image emojiDislike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\dislike.png");
+                        InputStream inDisLike = null;
+                        try {
+                            inDisLike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/dislike.png");
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Image emojiDislike = new Image(inDisLike);
+//                        Image emojiDislike = new Image("dislike.png");
                         imageView3.setImage(emojiDislike);
                         imageView3.setFitWidth(10);
                         imageView3.setFitHeight(10);
@@ -2154,7 +2283,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void createVoiceChannel(MouseEvent mouseEvent) {
+    public void createVoiceChannel(MouseEvent mouseEvent) throws FileNotFoundException {
         String voiceChannelName = createVoiceChannelField.getText();
         int i = 0;
         String text = serverNameButton.getText();
@@ -2171,7 +2300,9 @@ public class DiscordMainPage {
             textChannels.setFill(Color.valueOf("white"));
             HBox row = new HBox();
             ImageView imageView = new ImageView();
-            Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\voice.png");
+            InputStream intxtChannel = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/voice.png");
+            Image textChannel = new Image(intxtChannel);
+//            Image textChannel = new Image("voice.png");
             imageView.setImage(textChannel);
             imageView.setFitWidth(12);
             imageView.setFitHeight(12);
@@ -2338,7 +2469,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void refreshTextChannel(MouseEvent mouseEvent) {
+    public void refreshTextChannel(MouseEvent mouseEvent) throws FileNotFoundException {
         String text = textChannelTitle.getText();
         int s = 0;
         while(!text.substring(s, s + 5).equals(" id: ")){
@@ -2423,7 +2554,8 @@ public class DiscordMainPage {
             }
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image1 = new Image(client.getDataBase().returnPictureAddress(name));
+            InputStream inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+            Image image1 = new Image(inimage1);
             circle.setFill(new ImagePattern(image1));
             circle.setRadius(18.0);
             VBox column = new VBox();
@@ -2440,7 +2572,9 @@ public class DiscordMainPage {
             idText.setFill(Color.valueOf("white"));
             VBox heartsEmojis = new VBox();
             ImageView imageView1 = new ImageView();
-            Image emojiHeart = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\heart.png");
+            InputStream inheart = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/heart.png");
+            Image emojiHeart = new Image(inheart);
+//            Image emojiHeart = new Image("heart.png");
             imageView1.setImage(emojiHeart);
             imageView1.setFitWidth(10);
             imageView1.setFitHeight(10);
@@ -2451,7 +2585,9 @@ public class DiscordMainPage {
             heartsEmojis.getChildren().add(number1);
             VBox likesEmojis = new VBox();
             ImageView imageView2 = new ImageView();
-            Image emojiLike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\like.png");
+            InputStream inLike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/like.png");
+            Image emojiLike = new Image(inLike);
+//            Image emojiLike = new Image("like.png");
             imageView2.setImage(emojiLike);
             imageView2.setFitWidth(10);
             imageView2.setFitHeight(10);
@@ -2462,7 +2598,9 @@ public class DiscordMainPage {
             likesEmojis.getChildren().add(number2);
             VBox dislikesEmojis = new VBox();
             ImageView imageView3 = new ImageView();
-            Image emojiDislike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\dislike.png");
+            InputStream inDislike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/dislike.png");
+            Image emojiDislike = new Image(inDislike);
+//            Image emojiDislike = new Image("dislike.png");
             imageView3.setImage(emojiDislike);
             imageView3.setFitWidth(10);
             imageView3.setFitHeight(10);
@@ -2552,7 +2690,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void refreshServerAdmins(MouseEvent mouseEvent) {
+    public void refreshServerAdmins(MouseEvent mouseEvent) throws FileNotFoundException {
         int i = 0;
         String text = serverNameButton.getText();
         while(!text.substring(i, i + 5).equals(": id ")){
@@ -2566,7 +2704,8 @@ public class DiscordMainPage {
             HBox row = new HBox();
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image = new Image(client.getDataBase().returnPictureAddress(client.getDataBase().getUser(id).getUsername()));
+            InputStream inimage = new FileInputStream(client.getDataBase().returnPictureAddress(client.getDataBase().getUser(id).getUsername()));
+            Image image = new Image(inimage);
             circle.setFill(new ImagePattern(image));
             circle.setRadius(18.0);
             VBox column = new VBox();
@@ -2598,7 +2737,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void refreshServersChannels(MouseEvent mouseEvent) {
+    public void refreshServersChannels(MouseEvent mouseEvent) throws FileNotFoundException {
         int i = 0;
         String text = serverNameButton.getText();
         while(!text.substring(i, i + 5).equals(": id ")){
@@ -2615,7 +2754,9 @@ public class DiscordMainPage {
             if(chat instanceof ChatMessages) {
                 determine = 1;
                 ImageView imageView = new ImageView();
-                Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\hashtag.png");
+                InputStream intxt = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/hashtag.png");
+                Image textChannel = new Image(intxt);
+//                Image textChannel = new Image("hashtag.png");
                 imageView.setImage(textChannel);
                 imageView.setFitWidth(12);
                 imageView.setFitHeight(12);
@@ -2633,7 +2774,9 @@ public class DiscordMainPage {
             }
             else {
                 ImageView imageView = new ImageView();
-                Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\voice.png");
+                InputStream intxt = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/voice.png");
+                Image textChannel = new Image(intxt);
+//                Image textChannel = new Image("voice.png");
                 imageView.setImage(textChannel);
                 imageView.setFitWidth(12);
                 imageView.setFitHeight(12);
@@ -2725,7 +2868,7 @@ public class DiscordMainPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void refreshAdminsAndUsers(MouseEvent mouseEvent) {
+    public void refreshAdminsAndUsers(MouseEvent mouseEvent) throws FileNotFoundException {
         String text = textChannelTitle.getText();
         int i = 0;
         while(i < text.length() && !text.substring(i, i + 5).equals(" id: ")){
@@ -2739,7 +2882,8 @@ public class DiscordMainPage {
             HBox row = new HBox();
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image1 = new Image(client.getDataBase().returnPictureAddress(u.getUsername()));
+            InputStream inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(u.getUsername()));
+            Image image1 = new Image(inimage1);
             circle.setFill(new ImagePattern(image1));
             circle.setRadius(18.0);
             VBox column = new VBox();
@@ -2764,7 +2908,8 @@ public class DiscordMainPage {
             text1.setFill(Color.valueOf("white"));
             Circle circle = new Circle();
             circle.setStroke(Color.valueOf( "#23272A"));
-            Image image1 = new Image(client.getDataBase().returnPictureAddress(u.getUsername()));
+            InputStream inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(u.getUsername()));
+            Image image1 = new Image(inimage1);
             circle.setFill(new ImagePattern(image1));
             circle.setRadius(18.0);
             VBox column = new VBox();
@@ -3004,7 +3149,14 @@ public class DiscordMainPage {
                         if(chat instanceof ChatMessages) {
                             determine = 1;
                             ImageView imageView = new ImageView();
-                            Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\hashtag.png");
+                            InputStream intxt = null;
+                            try {
+                                intxt = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/hashtag.png");
+                            } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Image textChannel = new Image(intxt);
+//                            Image textChannel = new Image("hashtag.png");
                             imageView.setImage(textChannel);
                             imageView.setFitWidth(12);
                             imageView.setFitHeight(12);
@@ -3022,7 +3174,14 @@ public class DiscordMainPage {
                         }
                         else {
                             ImageView imageView = new ImageView();
-                            Image textChannel = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\voice.png");
+                            InputStream intxt = null;
+                            try {
+                                intxt = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/voice.png");
+                            } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            Image textChannel = new Image(intxt);
+//                            Image textChannel = new Image("voice.png");
                             imageView.setImage(textChannel);
                             imageView.setFitWidth(12);
                             imageView.setFitHeight(12);
@@ -3143,7 +3302,13 @@ public class DiscordMainPage {
                                         }
                                         Circle circle = new Circle();
                                         circle.setStroke(Color.valueOf( "#23272A"));
-                                        Image image1 = new Image(client.getDataBase().returnPictureAddress(name));
+                                        InputStream inimage1= null;
+                                        try {
+                                            inimage1 = new FileInputStream(client.getDataBase().returnPictureAddress(name));
+                                        } catch (FileNotFoundException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                        Image image1 = new Image(inimage1);
                                         circle.setFill(new ImagePattern(image1));
                                         circle.setRadius(18.0);
                                         VBox column = new VBox();
@@ -3160,7 +3325,14 @@ public class DiscordMainPage {
                                         idText.setFill(Color.valueOf("white"));
                                         VBox heartsEmojis = new VBox();
                                         ImageView imageView1 = new ImageView();
-                                        Image emojiHeart = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\heart.png");
+                                        InputStream inheart = null;
+                                        try {
+                                            inheart = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/heart.png");
+                                        } catch (FileNotFoundException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                        Image emojiHeart = new Image(inheart);
+//                                        Image emojiHeart = new Image("heart.png");
                                         imageView1.setImage(emojiHeart);
                                         imageView1.setFitWidth(10);
                                         imageView1.setFitHeight(10);
@@ -3171,7 +3343,14 @@ public class DiscordMainPage {
                                         heartsEmojis.getChildren().add(number1);
                                         VBox likesEmojis = new VBox();
                                         ImageView imageView2 = new ImageView();
-                                        Image emojiLike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\like.png");
+                                        InputStream inlike = null;
+                                        try {
+                                            inlike = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/like.png");
+                                        } catch (FileNotFoundException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                        Image emojiLike = new Image(inlike);
+//                                        Image emojiLike = new Image("like.png");
                                         imageView2.setImage(emojiLike);
                                         imageView2.setFitWidth(10);
                                         imageView2.setFitHeight(10);
@@ -3182,7 +3361,14 @@ public class DiscordMainPage {
                                         likesEmojis.getChildren().add(number2);
                                         VBox dislikesEmojis = new VBox();
                                         ImageView imageView3 = new ImageView();
-                                        Image emojiDislike = new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\dislike.png");
+                                        InputStream indis = null;
+                                        try {
+                                            indis = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/dislike.png");
+                                        } catch (FileNotFoundException e) {
+                                            throw new RuntimeException(e);
+                                        }
+                                        Image emojiDislike = new Image(indis);
+//                                        Image emojiDislike = new Image("dislike.png");
                                         imageView3.setImage(emojiDislike);
                                         imageView3.setFitWidth(10);
                                         imageView3.setFitHeight(10);

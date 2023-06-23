@@ -6,6 +6,7 @@ import java.net.Socket;
 
 public class Server {
     public static void main(String[] args) {
+        System.out.println("log");
         try {
             ServerSocket serverSocket = new ServerSocket(2000);
             while (true) {

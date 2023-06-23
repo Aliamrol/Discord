@@ -154,6 +154,7 @@ public class SignUpPage {
         wrongConfirmPassword.setVisible(false);
         emptyConfirm.setVisible(false);
         User user = new User();
+        System.out.println(user.getPictureAddress());
         String username = usernameField.getText();
         user.setUsername(username);
         if(client.getUser().setUsername(username) == 0){
@@ -263,7 +264,7 @@ public class SignUpPage {
      */
     public void visible1Clicked(MouseEvent mouseEvent) {
         if ( cnt1 % 2 != 0){
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\visible.png"));
+            ((ImageView)mouseEvent.getSource()).setImage(new Image("visible.png"));
             passwordTextField.setVisible(false);
             passwordField.setText(passwordTextField.getText());
             passwordTextField.clear();
@@ -271,7 +272,7 @@ public class SignUpPage {
             cnt1++;
         }
         else{
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\invisible.png"));
+            ((ImageView)mouseEvent.getSource()).setImage(new Image("invisible.png"));
             passwordField.setVisible(false);
             passwordTextField.setText(passwordField.getText());
             passwordField.clear();
@@ -292,7 +293,7 @@ public class SignUpPage {
      */
     public void visible2Clicked(MouseEvent mouseEvent) {
         if ( cnt2 % 2 != 0){
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\visible.png"));
+            ((ImageView)mouseEvent.getSource()).setImage(new Image("visible.png"));
             confirmTextField.setVisible(false);
             confirmField.setText(confirmTextField.getText());
             confirmTextField.clear();
@@ -300,7 +301,7 @@ public class SignUpPage {
             cnt2++;
         }
         else{
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\invisible.png"));
+            ((ImageView)mouseEvent.getSource()).setImage(new Image("invisible.png"));
             confirmField.setVisible(false);
             confirmTextField.setText(confirmField.getText());
             confirmField.clear();

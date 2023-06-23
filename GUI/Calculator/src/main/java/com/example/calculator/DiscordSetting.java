@@ -20,8 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * The type Discord setting.
@@ -146,11 +145,12 @@ public class DiscordSetting {
      *
      * @param client the client
      */
-    public void setClient (Client client){
+    public void setClient (Client client) throws FileNotFoundException {
         this.client = client;
         usernameField.setText(client.getUser().getUsername());
         myImage.setStroke(Color.valueOf( "#23272A"));
-        Image image = new Image(client.getUser().getPictureAddress());
+        InputStream inimage = new FileInputStream(client.getUser().getPictureAddress());
+        Image image = new Image(inimage);
         myImage.setFill(new ImagePattern(image));
         usernameText.setText(client.getUser().getUsername());
         emailText.setText(client.getUser().getEmail());
@@ -218,14 +218,15 @@ public class DiscordSetting {
      * @param event the event
      */
     @FXML
-    void changePicture(MouseEvent event) {
+    void changePicture(MouseEvent event) throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choose picture");
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
         if(file != null) {
             client.getUser().setPictureAddress(file.getAbsolutePath());
-            Image image = new Image(client.getUser().getPictureAddress());
+            InputStream inimage = new FileInputStream(client.getUser().getPictureAddress());
+            Image image = new Image(inimage);
             myImage.setFill(new ImagePattern(image));
             client.getDataBase().updateUser(client.getUser());
             client.outputClientDataBase();

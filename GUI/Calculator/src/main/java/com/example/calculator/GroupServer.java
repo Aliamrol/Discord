@@ -8,7 +8,6 @@ import java.util.ArrayList;
  */
 public class GroupServer implements Serializable {
     private ArrayList<Integer> chats;
-
     private ArrayList<Integer> admins;
 
     private int owner;

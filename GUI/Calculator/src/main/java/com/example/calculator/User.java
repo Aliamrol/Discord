@@ -35,7 +35,7 @@ public class User implements Serializable {
         friendsId = new HashSet<>();
         blocked = new HashSet<>();
         friendRequests = new HashSet<>();
-        pictureAddress = "C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\discordUserLogo.png";
+        pictureAddress = "/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/discordUserLogo.png";
         state = "Online";
     }
 

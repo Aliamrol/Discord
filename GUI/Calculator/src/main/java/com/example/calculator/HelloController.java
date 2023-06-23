@@ -15,7 +15,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -123,6 +126,7 @@ public class HelloController implements Initializable {
             invalidInfoLogin.setVisible(true);
             usernameField.clear();
             passwordField.clear();
+
         }
     }
 
@@ -136,9 +140,10 @@ public class HelloController implements Initializable {
      *
      * @param mouseEvent the mouse event
      */
-    public void visibleClicked(MouseEvent mouseEvent) {
+    public void visibleClicked(MouseEvent mouseEvent) throws FileNotFoundException {
         if ( cnt % 2 != 0){
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\visible.png"));
+            InputStream in = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/visible.png");
+            ((ImageView)mouseEvent.getSource()).setImage(new Image(in));
             passwordTextField.setVisible(false);
             passwordField.setText(passwordTextField.getText());
             passwordTextField.clear();
@@ -146,7 +151,8 @@ public class HelloController implements Initializable {
             cnt++;
         }
         else{
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("C:\\Users\\LENOVO\\IdeaProjects\\Calculator\\src\\main\\resources\\com\\example\\calculator\\Pics\\invisible.png"));
+            InputStream in = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/invisible.png");
+            ((ImageView)mouseEvent.getSource()).setImage(new Image(in));
             passwordField.setVisible(false);
             passwordTextField.setText(passwordField.getText());
             passwordField.clear();
