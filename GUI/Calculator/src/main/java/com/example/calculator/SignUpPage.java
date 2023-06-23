@@ -14,7 +14,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * The type Sign up page.
@@ -262,9 +265,10 @@ public class SignUpPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void visible1Clicked(MouseEvent mouseEvent) {
+    public void visible1Clicked(MouseEvent mouseEvent) throws FileNotFoundException {
         if ( cnt1 % 2 != 0){
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("visible.png"));
+            InputStream inimage = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/visible.png");
+            ((ImageView)mouseEvent.getSource()).setImage(new Image(inimage));
             passwordTextField.setVisible(false);
             passwordField.setText(passwordTextField.getText());
             passwordTextField.clear();
@@ -272,7 +276,8 @@ public class SignUpPage {
             cnt1++;
         }
         else{
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("invisible.png"));
+            InputStream inimage = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/invisible.png");
+            ((ImageView)mouseEvent.getSource()).setImage(new Image(inimage));
             passwordField.setVisible(false);
             passwordTextField.setText(passwordField.getText());
             passwordField.clear();
@@ -291,9 +296,10 @@ public class SignUpPage {
      *
      * @param mouseEvent the mouse event
      */
-    public void visible2Clicked(MouseEvent mouseEvent) {
+    public void visible2Clicked(MouseEvent mouseEvent) throws FileNotFoundException {
         if ( cnt2 % 2 != 0){
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("visible.png"));
+            InputStream inimage = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/visible.png");
+            ((ImageView)mouseEvent.getSource()).setImage(new Image(inimage));
             confirmTextField.setVisible(false);
             confirmField.setText(confirmTextField.getText());
             confirmTextField.clear();
@@ -301,7 +307,8 @@ public class SignUpPage {
             cnt2++;
         }
         else{
-            ((ImageView)mouseEvent.getSource()).setImage(new Image("invisible.png"));
+            InputStream inimage = new FileInputStream("/home/ali/Desktop/Projects/Calculator/src/main/resources/com/example/calculator/Pics/invisible.png");
+            ((ImageView)mouseEvent.getSource()).setImage(new Image(inimage));
             confirmField.setVisible(false);
             confirmTextField.setText(confirmField.getText());
             confirmField.clear();
