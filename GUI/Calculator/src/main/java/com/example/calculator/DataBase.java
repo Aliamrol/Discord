@@ -2614,7 +2614,7 @@ public class DataBase implements Serializable {
                 return "You are not allowed to send message to this private chat";
             }
             boolean flagblock = false;
-            fileInputStream1 = new FileInputStream("users.bin");
+            fileInputStream1 = new FileInputStream("Users.bin");
             objectInputStream1 = new ObjectInputStream(fileInputStream1);
             users = (Users) objectInputStream1.readObject();
             User user = new User();
