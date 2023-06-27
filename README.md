@@ -1,8 +1,9 @@
-# Discord
-a app for connection to people.
-this is a demo, localhost version of Discord.
-in this version, you are able to create a server and create a group to chat with diffrent people and create a two-person chat with the desired person.
-you also have to ability to create channels where only admins can send messages.
-other features such as blocking a chat, changing the profile, and setting status, etc.
-this program made in 3 versions: terminal, desktop, android. (Android does not support some features)
-technologies used in this project are Java and Java FX.
+# DISCORD
+This is a demo version of a real Discord application where you can create an account and log into
+your account. You can have private chats with your friends and stay connected. Additionally, you can
+create servers, create channels and groups within the servers, and chat with a group of friends. It also
+includes features like blocking users and adding them to your friends list, and more.
+## Sign in & Sign up
+to access the application, you need to have an account. if you don't have an account, you can go to the *** Sign Up*** section and create an account using your information.
+![/home/ali/Pictures/dis/first_page_gui.png]
+![/home/ali/Pictures/dis/creat_account_gui.png]
