@@ -5,5 +5,5 @@ create servers, create channels and groups within the servers, and chat with a g
 includes features like blocking users and adding them to your friends list, and more.
 ## Sign in & Sign up
 to access the application, you need to have an account. if you don't have an account, you can go to the *** Sign Up*** section and create an account using your information.
-![/home/ali/Pictures/dis/first_page_gui.png]
-![/home/ali/Pictures/dis/creat_account_gui.png]
+![/images/first_page_gui.png]
+![/images/creat_account_gui.png]
